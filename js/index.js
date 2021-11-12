@@ -91,3 +91,55 @@ const enabledScroll = () => {
 // pageOverlayModal.classList.add('page__overlay_modal_open');
 // pageOverlayModal.classList.remove('page__overlay_modal_open');
 //header__contacts_open
+
+{
+	// Lesson-3 Галлерея
+	const portfolioList = document.querySelector('.portfolio__list');
+	const pageOverlay = document.createElement('div');
+	pageOverlay.classList.add('page__overlay');
+
+	portfolioList.addEventListener('click', (e) => {
+
+		//console.log(e.target);
+		//console.log(e.target.closest('.card'));
+
+		disabledScroll();
+		const card = e.target.closest('.card');
+
+		if (card) {
+			document.body.append(pageOverlay);
+			const title = card.querySelector('.card__client');
+			const picture = document.createElement('picture');
+			picture.style.cssText = `
+				position:absolute;
+				top: 20px;
+				left: 50%;
+				trasnform: translateX(-50%);
+				width:90%;
+				max-width: 1440px;
+			`;
+			picture.innerHTML = `
+			<source srcset"${card.dataset.fullImage}.avif" type"image/avif">
+			<source srcset"${card.dataset.fullImage}.webp" type"image/webp">
+			<img src="${card.dataset.fullImage}.jpg" alt="${title.textContent}">	
+			`;
+			pageOverlay.append(picture);
+			// const img = document.createElement('img');
+			// img.style.cssText = `
+			// position:absolute;
+			// top: 20px;
+			// left: 50%;
+			// trasnform: translateX(-50%);
+			// `;
+			// img.src = `${card.dataset.fullImage}.jpg`;
+			// pageOverlay.append(img);
+		}
+	});
+	pageOverlay.addEventListener('click', () => {
+		pageOverlay.textContent = '';
+		pageOverlay.remove();
+		enabledScroll();
+	});
+
+
+}
