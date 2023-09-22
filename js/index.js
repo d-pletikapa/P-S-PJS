@@ -4,7 +4,7 @@ const disabledScroll = () => {
 
 	document.body.style.cssText = `
 	overflow: hidden;
-	// position: fixed;
+	position: fixed;
 	top: -${document.body.scrollPosition}px;
 	left: 0;
 	height: 100vh;
