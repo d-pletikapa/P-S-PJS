@@ -4,7 +4,7 @@ const disabledScroll = () => {
 
 	document.body.style.cssText = `
 	overflow: hidden;
-	position: fixed;
+	// position: fixed;
 	top: -${document.body.scrollPosition}px;
 	left: 0;
 	height: 100vh;
@@ -112,9 +112,9 @@ const enabledScroll = () => {
 			const picture = document.createElement('picture');
 			picture.style.cssText = `
 				position:absolute;
-				top: 20px;
+				top: 5%;
 				left: 50%;
-				trasnform: translateX(-50%);
+				transform: translateX(-50%);
 				width:90%;
 				max-width: 1440px;
 			`;
